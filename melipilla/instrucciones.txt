@@ -1,0 +1,61 @@
+1
+Crear carpeta y subcarpeta de skills todos
+Crea el proyecto y la carpeta donde van a vivir los skills. Claude Code los detecta automáticamente ahí.
+mkdir mi-pagina; cd mi-pagina; mkdir -p .claude\skills
+El flag -p crea las carpetas anidadas de una sola vez.
+Fase 2 — Clonar los repos de skills
+2
+Clonar Impeccable Impeccable
+Clona el repo en una carpeta temporal. Solo necesitamos los archivos .md de adentro.
+git clone --depth 1 https://github.com/pbakaus/impeccable _tmp_impeccable
+--depth 1 descarga solo el último commit, mucho más rápido.
+3
+Copiar el skill de Impeccable Impeccable
+Copia solo la carpeta del skill al directorio correcto y borra el repo temporal.
+xcopy /E /I _tmp_impeccable\.claude\skills\impeccable .claude\skills\impeccable
+rmdir /S /Q _tmp_impeccable
+4
+Clonar Taste Skill Taste
+git clone --depth 1 https://github.com/Leonxlnx/taste-skill _tmp_taste
+5
+Copiar el skill de Taste Taste
+Taste tiene los skills dentro de una carpeta skills/ en la raíz del repo.
+xcopy /E /I _tmp_taste\skills .claude\skills
+rmdir /S /Q _tmp_taste
+6
+Clonar Emil Kowalski Design Emil
+git clone --depth 1 https://github.com/emilkowalski/skill _tmp_emil
+7
+Copiar el skill de Emil Emil
+xcopy /E /I _tmp_emil\skills .claude\skills
+rmdir /S /Q _tmp_emil
+Fase 3 — Verificar estructura
+8
+Confirmar que quedó bien todos
+Debería verse algo así:
+dir .claude\skills
+mi-pagina\
+└── .claude\
+    └── skills\
+        ├── impeccable\
+        │   └── SKILL.md
+        ├── design-taste-frontend\
+        │   └── SKILL.md
+        └── emil-design-eng\
+            └── SKILL.md
+Fase 4 — Abrir Claude Code y usarlos
+9
+Lanzar Claude Code todos
+Siempre desde dentro de la carpeta del proyecto.
+claude
+Claude Code detecta .claude/skills/ automáticamente al arrancar.
+10
+Prompt inicial para generar la página todos
+Pégalo en Claude Code. Activa los tres skills explícitamente.
+Usa los skills de impeccable, design-taste-frontend y emil-design-eng para crear una landing page moderna. Aplica /impeccable audit al terminar.
+Reemplaza "landing page moderna" por lo que quieras construir.
+11
+Auditar y pulir Impeccable
+Después de que Claude genere el código, corre estos dos en orden.
+/impeccable audit
+/impeccable polish

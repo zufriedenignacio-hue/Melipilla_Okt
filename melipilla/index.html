@@ -1,0 +1,1627 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valle La Libertad — Parcelas en Puangue, Melipilla</title>
+  <meta name="description" content="23 parcelas agrícolas desde 5.000 m² en Puangue, Melipilla. Agua de riego, factibilidad de luz, acceso privado. A una hora de Santiago.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ═══════════════════════════════════════
+       TOKENS
+    ═══════════════════════════════════════ */
+    :root {
+      --bg:        #0d0c0b;
+      --bg-alt:    #111110;
+      --bg-card:   #161513;
+      --cream:     #f0ebe3;
+      --wheat:     #c9a96e;
+      --green:     #4a6741;
+      --border:    rgba(201, 169, 110, 0.15);
+
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans:  'Jost', system-ui, sans-serif;
+
+      --ease:   cubic-bezier(0.16, 1, 0.3, 1);
+
+      --s-xs:  0.375rem;
+      --s-sm:  1rem;
+      --s-md:  2rem;
+      --s-lg:  4rem;
+      --s-xl:  6rem;
+      --s-2xl: 8rem;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background-color: var(--bg);
+      color: var(--cream);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; }
+
+    ::selection { background: rgba(201, 169, 110, 0.25); color: var(--cream); }
+
+    /* ─── Reveal ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 700ms var(--ease), transform 700ms var(--ease);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .reveal:nth-child(1) { transition-delay: 0ms; }
+    .reveal:nth-child(2) { transition-delay: 80ms; }
+    .reveal:nth-child(3) { transition-delay: 160ms; }
+    .reveal:nth-child(4) { transition-delay: 240ms; }
+    .reveal:nth-child(5) { transition-delay: 320ms; }
+
+    @media (prefers-reduced-motion: no-preference) { /* defaults above */ }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* ─── Scrollbar ─── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: rgba(201, 169, 110, 0.3); border-radius: 3px; }
+
+    /* ═══════════════════════════════════════
+       NAVBAR
+    ═══════════════════════════════════════ */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow 300ms var(--ease);
+    }
+    .navbar.scrolled { box-shadow: 0 2px 32px rgba(0,0,0,0.5); }
+
+    .navbar-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 var(--s-md);
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--wheat);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-links { display: flex; gap: var(--s-md); list-style: none; }
+
+    .nav-links a {
+      font-family: var(--sans);
+      font-size: 0.688rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--cream);
+      text-decoration: none;
+      opacity: 0.6;
+      transition: opacity 200ms ease;
+    }
+    .nav-links a:hover,
+    .nav-links a[aria-current="true"] { opacity: 1; }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 12px;
+      color: var(--cream);
+    }
+
+    /* ═══════════════════════════════════════
+       HERO
+    ═══════════════════════════════════════ */
+    #hero {
+      position: relative;
+      height: 100dvh;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background-image: url('https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1800');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(13,12,11,0.2) 0%, rgba(13,12,11,0.75) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 0 var(--s-md);
+    }
+
+    .hero-sub-label {
+      font-family: var(--sans);
+      font-weight: 300;
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      color: var(--wheat);
+      margin-bottom: var(--s-sm);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 800ms 300ms var(--ease) forwards;
+    }
+
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(3.25rem, 8vw, 6rem);
+      font-weight: 500;
+      color: var(--cream);
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+      margin-bottom: var(--s-md);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 800ms 500ms var(--ease) forwards;
+    }
+
+    .hero-subtitle {
+      font-family: var(--sans);
+      font-size: clamp(0.85rem, 1.5vw, 1rem);
+      font-weight: 300;
+      color: rgba(240, 235, 227, 0.7);
+      max-width: 48ch;
+      margin: 0 auto var(--s-lg);
+      letter-spacing: 0.02em;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 800ms 700ms var(--ease) forwards;
+    }
+
+    .btn-hero {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--wheat);
+      text-decoration: none;
+      border: 1px solid var(--wheat);
+      padding: 14px 40px;
+      border-radius: 0;
+      cursor: pointer;
+      background: transparent;
+      transition: background 220ms ease, color 220ms ease, transform 120ms ease;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 800ms 900ms var(--ease) forwards;
+    }
+    .btn-hero:hover { background: var(--wheat); color: var(--bg); }
+    .btn-hero:active { transform: scale(0.97); }
+    .btn-hero:focus-visible { outline: 2px solid var(--wheat); outline-offset: 4px; }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Scroll cue */
+    .scroll-cue {
+      position: absolute;
+      bottom: var(--s-md);
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      z-index: 1;
+    }
+    .scroll-cue span {
+      font-family: var(--sans);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(201, 169, 110, 0.5);
+    }
+    .scroll-line {
+      width: 1px;
+      height: 44px;
+      background: linear-gradient(to bottom, var(--wheat), transparent);
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .scroll-line { animation: scrollPulse 2.2s ease-in-out infinite; }
+      @keyframes scrollPulse {
+        0%, 100% { opacity: 0.4; transform: scaleY(1); }
+        50% { opacity: 1; transform: scaleY(0.55); }
+      }
+    }
+
+    /* ═══════════════════════════════════════
+       PROYECTO
+    ═══════════════════════════════════════ */
+    #proyecto {
+      background: var(--bg-alt);
+      padding: 120px 0;
+      overflow: hidden;
+    }
+
+    .proyecto-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 var(--s-md);
+      display: grid;
+      grid-template-columns: 55% 45%;
+      align-items: center;
+      gap: 0;
+    }
+
+    .proyecto-text { padding-right: var(--s-lg); }
+
+    .proyecto-label {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--wheat);
+      margin-bottom: var(--s-sm);
+    }
+
+    .proyecto-title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 500;
+      color: var(--cream);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: var(--s-md);
+    }
+
+    .proyecto-body {
+      font-size: 1rem;
+      color: rgba(240, 235, 227, 0.72);
+      line-height: 1.75;
+      max-width: 52ch;
+      margin-bottom: var(--s-lg);
+    }
+
+    .proyecto-stats {
+      display: flex;
+      gap: var(--s-lg);
+    }
+
+    .stat { display: flex; flex-direction: column; }
+
+    .stat-num {
+      font-family: var(--serif);
+      font-size: 3rem;
+      font-weight: 500;
+      color: var(--wheat);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(240, 235, 227, 0.5);
+    }
+
+    .proyecto-photo-wrap {
+      height: 560px;
+      overflow: hidden;
+    }
+
+    .proyecto-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      clip-path: polygon(8% 0%, 100% 0%, 100% 100%, 0% 100%);
+      transition: transform 600ms var(--ease);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .proyecto-photo-wrap:hover img { transform: scale(1.03); }
+    }
+
+    /* ═══════════════════════════════════════
+       GALERÍA
+    ═══════════════════════════════════════ */
+    #galeria {
+      background: var(--bg);
+      padding: 120px 0;
+      overflow: hidden;
+    }
+
+    .gallery-outer { position: relative; }
+
+    .gallery-track {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      cursor: grab;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .gallery-track::-webkit-scrollbar { display: none; }
+    .gallery-track:active { cursor: grabbing; }
+
+    .gallery-slide {
+      flex: 0 0 100vw;
+      scroll-snap-align: start;
+      height: 70vh;
+      min-height: 400px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gallery-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 400ms var(--ease);
+      pointer-events: none;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .gallery-slide:hover img { transform: scale(1.02); }
+    }
+
+    .gallery-caption {
+      position: absolute;
+      bottom: var(--s-md);
+      left: 0; right: 0;
+      text-align: center;
+      font-family: var(--sans);
+      font-style: italic;
+      font-size: 0.8rem;
+      color: rgba(240, 235, 227, 0.55);
+      letter-spacing: 0.03em;
+      pointer-events: none;
+    }
+
+    /* Gallery nav */
+    .gallery-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--s-md);
+      margin-top: var(--s-md);
+      padding: 0 var(--s-md);
+    }
+
+    .gallery-btn {
+      width: 44px;
+      height: 44px;
+      background: transparent;
+      border: 1px solid rgba(201, 169, 110, 0.4);
+      color: var(--wheat);
+      cursor: pointer;
+      border-radius: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 200ms ease, color 200ms ease, transform 120ms ease, border-color 200ms ease;
+    }
+    .gallery-btn:hover { background: var(--wheat); color: var(--bg); border-color: var(--wheat); }
+    .gallery-btn:active { transform: scale(0.97); }
+    .gallery-btn:focus-visible { outline: 2px solid var(--wheat); outline-offset: 3px; }
+    .gallery-btn svg { width: 18px; height: 18px; }
+
+    .gallery-dots {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .gallery-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(201, 169, 110, 0.3);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: background 200ms ease, transform 200ms ease;
+    }
+    .gallery-dot.active { background: var(--wheat); transform: scale(1.5); }
+    .gallery-dot:hover { background: rgba(201, 169, 110, 0.7); }
+
+    /* ═══════════════════════════════════════
+       LIGHTBOX
+    ═══════════════════════════════════════ */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      background: rgba(13, 12, 11, 0.96);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 300ms ease;
+    }
+    .lightbox.open { opacity: 1; pointer-events: all; }
+
+    .lightbox-img-wrap {
+      max-width: 90vw;
+      max-height: 88vh;
+      position: relative;
+    }
+
+    .lightbox-img-wrap img {
+      max-width: 90vw;
+      max-height: 88vh;
+      object-fit: contain;
+      display: block;
+    }
+
+    .lightbox-caption {
+      position: absolute;
+      bottom: -40px;
+      left: 0; right: 0;
+      text-align: center;
+      font-family: var(--sans);
+      font-style: italic;
+      font-size: 0.8rem;
+      color: rgba(240, 235, 227, 0.5);
+    }
+
+    .lightbox-close {
+      position: fixed;
+      top: var(--s-md);
+      right: var(--s-md);
+      width: 44px;
+      height: 44px;
+      background: transparent;
+      border: 1px solid rgba(201, 169, 110, 0.4);
+      color: var(--wheat);
+      cursor: pointer;
+      border-radius: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 501;
+      transition: background 200ms ease, color 200ms ease, transform 120ms ease;
+    }
+    .lightbox-close:hover { background: var(--wheat); color: var(--bg); }
+    .lightbox-close:active { transform: scale(0.97); }
+    .lightbox-close svg { width: 18px; height: 18px; }
+
+    .lightbox-prev,
+    .lightbox-next {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      background: transparent;
+      border: 1px solid rgba(201, 169, 110, 0.35);
+      color: var(--wheat);
+      cursor: pointer;
+      border-radius: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 501;
+      transition: background 200ms ease, color 200ms ease, transform 120ms ease;
+    }
+    .lightbox-prev { left: var(--s-md); }
+    .lightbox-next { right: var(--s-md); }
+    .lightbox-prev:hover,
+    .lightbox-next:hover { background: var(--wheat); color: var(--bg); border-color: var(--wheat); }
+    .lightbox-prev:active,
+    .lightbox-next:active { transform: translateY(-50%) scale(0.97); }
+    .lightbox-prev:focus-visible,
+    .lightbox-next:focus-visible { outline: 2px solid var(--wheat); outline-offset: 3px; }
+    .lightbox-prev svg,
+    .lightbox-next svg { width: 20px; height: 20px; }
+
+    .lightbox-counter {
+      position: fixed;
+      bottom: var(--s-md);
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      color: rgba(240, 235, 227, 0.4);
+    }
+
+    /* ═══════════════════════════════════════
+       LOTEO
+    ═══════════════════════════════════════ */
+    #loteo {
+      background: var(--bg);
+      padding: 120px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .loteo-watermark {
+      font-family: var(--serif);
+      font-size: clamp(200px, 30vw, 400px);
+      color: var(--wheat);
+      opacity: 0.05;
+      position: absolute;
+      right: -0.05em;
+      top: 50%;
+      transform: translateY(-50%);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+      letter-spacing: -0.05em;
+    }
+
+    .loteo-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 var(--s-md);
+      position: relative;
+    }
+
+    .loteo-title {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 500;
+      color: var(--cream);
+      letter-spacing: -0.02em;
+      margin-bottom: var(--s-lg);
+    }
+
+    .loteo-attrs {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      max-width: 560px;
+    }
+
+    .loteo-attr {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      padding: 1.1rem 0;
+      border-top: 1px solid rgba(201, 169, 110, 0.12);
+    }
+    .loteo-attr:last-child { border-bottom: 1px solid rgba(201, 169, 110, 0.12); }
+
+    .loteo-attr-num {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--wheat);
+      flex-shrink: 0;
+      min-width: 2.5ch;
+    }
+
+    .loteo-attr-text {
+      font-size: 0.95rem;
+      color: rgba(240, 235, 227, 0.72);
+    }
+
+    /* ═══════════════════════════════════════
+       UBICACIÓN
+    ═══════════════════════════════════════ */
+    #ubicacion {
+      background: var(--bg-alt);
+      padding: 120px 0;
+    }
+
+    .ubicacion-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 var(--s-md);
+    }
+
+    .ubicacion-header {
+      margin-bottom: var(--s-lg);
+    }
+
+    .ubicacion-label {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--wheat);
+      margin-bottom: var(--s-sm);
+    }
+
+    .ubicacion-title {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 500;
+      color: var(--cream);
+      letter-spacing: -0.02em;
+    }
+
+    .ubicacion-body {
+      font-size: 0.95rem;
+      color: rgba(240, 235, 227, 0.65);
+      margin-top: var(--s-sm);
+      max-width: 52ch;
+    }
+
+    .ubicacion-map {
+      width: 100%;
+      height: 420px;
+      border: none;
+      display: block;
+      filter: brightness(0.85) contrast(1.05);
+    }
+
+    .ubicacion-access {
+      margin-top: var(--s-sm);
+      font-size: 0.9rem;
+      color: rgba(240, 235, 227, 0.55);
+      font-style: italic;
+    }
+
+    .ubicacion-btns {
+      display: flex;
+      gap: var(--s-sm);
+      margin-top: var(--s-md);
+      flex-wrap: wrap;
+    }
+
+    .btn-outline-wheat {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--wheat);
+      text-decoration: none;
+      border: 1px solid rgba(201, 169, 110, 0.5);
+      padding: 12px 24px;
+      border-radius: 0;
+      transition: background 200ms ease, color 200ms ease, transform 120ms ease;
+    }
+    .btn-outline-wheat:hover { background: var(--wheat); color: var(--bg); }
+    .btn-outline-wheat:active { transform: scale(0.97); }
+    .btn-outline-wheat:focus-visible { outline: 2px solid var(--wheat); outline-offset: 3px; }
+    .btn-outline-wheat img { width: 32px; height: 32px; display: block; margin-right: 8px; flex-shrink: 0; }
+
+    /* ═══════════════════════════════════════
+       PROPUESTA
+    ═══════════════════════════════════════ */
+    #propuesta {
+      background: var(--bg-card);
+      padding: 120px 0;
+    }
+
+    .propuesta-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 var(--s-md);
+    }
+
+    .propuesta-header {
+      margin-bottom: var(--s-xl);
+    }
+
+    .propuesta-label {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--wheat);
+      margin-bottom: var(--s-sm);
+    }
+
+    .propuesta-title {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 500;
+      color: var(--cream);
+      letter-spacing: -0.02em;
+    }
+
+    .propuesta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .prop-block {
+      padding: var(--s-lg) var(--s-md) var(--s-lg) 0;
+      border-top: 1px solid rgba(201, 169, 110, 0.18);
+    }
+    .prop-block:nth-child(even) { padding-left: var(--s-md); padding-right: 0; }
+
+    .prop-block-num {
+      font-family: var(--serif);
+      font-size: clamp(4rem, 8vw, 6rem);
+      font-weight: 500;
+      color: var(--wheat);
+      opacity: 0.35;
+      line-height: 1;
+      margin-bottom: var(--s-sm);
+      letter-spacing: -0.03em;
+    }
+
+    .prop-block-title {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: var(--cream);
+      margin-bottom: var(--s-sm);
+      letter-spacing: -0.01em;
+    }
+
+    .prop-block-body {
+      font-size: 0.9rem;
+      color: rgba(240, 235, 227, 0.6);
+      line-height: 1.7;
+      max-width: 42ch;
+    }
+
+    .prop-block-img {
+      width: 32px;
+      height: 32px;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    /* ═══════════════════════════════════════
+       FORMULARIO
+    ═══════════════════════════════════════ */
+    #visitar {
+      background: var(--bg);
+      padding: 120px 0;
+      position: relative;
+    }
+
+    .visitar-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('./foto lote vista montañas 2.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.08;
+      pointer-events: none;
+    }
+
+    .visitar-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 var(--s-md);
+      position: relative;
+    }
+
+    .visitar-title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 500;
+      color: var(--cream);
+      letter-spacing: -0.02em;
+      text-align: center;
+      margin-bottom: var(--s-xl);
+    }
+
+    .form-wrap {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--s-md);
+    }
+
+    .form-group {
+      margin-bottom: var(--s-md);
+      position: relative;
+    }
+
+    .form-label {
+      display: block;
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(240, 235, 227, 0.55);
+      margin-bottom: 8px;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 14px 0;
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--cream);
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(201, 169, 110, 0.35);
+      outline: none;
+      border-radius: 0;
+      transition: border-color 200ms ease;
+      -webkit-appearance: none;
+    }
+    .form-input::placeholder { color: rgba(240, 235, 227, 0.28); }
+    .form-input:focus { border-bottom-color: var(--wheat); }
+    .form-input.error { border-bottom-color: #c0392b; }
+    .form-input.valid { border-bottom-color: var(--green); }
+
+    /* date input color fix */
+    .form-input[type="date"]::-webkit-calendar-picker-indicator {
+      filter: invert(0.7) sepia(1) saturate(2) hue-rotate(5deg);
+      cursor: pointer;
+    }
+
+    textarea.form-input {
+      resize: vertical;
+      min-height: 100px;
+      line-height: 1.6;
+    }
+
+    .field-error {
+      font-size: 0.72rem;
+      color: #c0392b;
+      margin-top: 5px;
+      min-height: 18px;
+    }
+
+    .btn-submit {
+      display: block;
+      width: 100%;
+      margin-top: var(--s-md);
+      padding: 16px 48px;
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--bg);
+      background: var(--wheat);
+      border: none;
+      cursor: pointer;
+      border-radius: 0;
+      transition: opacity 200ms ease, transform 120ms ease;
+    }
+    .btn-submit:hover { opacity: 0.85; }
+    .btn-submit:active { transform: scale(0.97); }
+    .btn-submit:focus-visible { outline: 2px solid var(--wheat); outline-offset: 4px; }
+
+    /* Confirmación */
+    .confirm {
+      position: fixed;
+      inset: 0;
+      z-index: 600;
+      background: rgba(13, 12, 11, 0.88);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--s-md);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 350ms ease;
+    }
+    .confirm.show { opacity: 1; pointer-events: all; }
+
+    .confirm-card {
+      background: var(--bg-alt);
+      border-top: 2px solid var(--green);
+      padding: var(--s-xl) var(--s-lg);
+      max-width: 460px;
+      width: 100%;
+      text-align: center;
+      transform: translateY(24px);
+      transition: transform 400ms var(--ease);
+    }
+    .confirm.show .confirm-card { transform: translateY(0); }
+
+    .confirm-icon {
+      width: 52px;
+      height: 52px;
+      background: var(--green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--s-md);
+    }
+    .confirm-icon svg { width: 26px; height: 26px; color: var(--cream); }
+
+    .confirm-title {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      font-weight: 500;
+      color: var(--cream);
+      margin-bottom: var(--s-sm);
+      letter-spacing: -0.02em;
+    }
+
+    .confirm-body {
+      font-size: 0.9rem;
+      color: rgba(240, 235, 227, 0.6);
+      line-height: 1.7;
+    }
+
+    .btn-confirm-close {
+      display: inline-block;
+      margin-top: var(--s-md);
+      padding: 12px 32px;
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cream);
+      background: transparent;
+      border: 1px solid rgba(201, 169, 110, 0.5);
+      cursor: pointer;
+      border-radius: 0;
+      transition: background 200ms ease, color 200ms ease, transform 120ms ease;
+    }
+    .btn-confirm-close:hover { background: var(--wheat); color: var(--bg); border-color: var(--wheat); }
+    .btn-confirm-close:active { transform: scale(0.97); }
+
+    /* ═══════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════ */
+    footer {
+      background: #080807;
+      padding: var(--s-lg) var(--s-md);
+      text-align: center;
+    }
+
+    footer p {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 300;
+      color: rgba(240, 235, 227, 0.28);
+      max-width: none;
+    }
+
+    footer strong { color: var(--wheat); font-weight: 400; }
+
+    /* ═══════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════ */
+    @media (max-width: 900px) {
+      .proyecto-inner { grid-template-columns: 1fr; }
+      .proyecto-photo-wrap { height: 360px; clip-path: none; }
+      .proyecto-text { padding-right: 0; margin-bottom: var(--s-lg); }
+      .propuesta-grid { grid-template-columns: 1fr; }
+      .prop-block:nth-child(even) { padding-left: 0; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .menu-toggle { display: flex; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 68px; left: 0; right: 0;
+        background: var(--bg);
+        border-bottom: 1px solid var(--border);
+        padding: var(--s-md);
+        gap: var(--s-sm);
+      }
+      .nav-links.open a { opacity: 1; }
+      .form-row { grid-template-columns: 1fr; }
+      .proyecto-stats { gap: var(--s-md); }
+      .ubicacion-btns { flex-direction: column; }
+      .btn-outline-wheat { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAVBAR ── -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="#hero" class="nav-brand">Valle La Libertad</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+          <line x1="4" y1="8" x2="20" y2="8"/>
+          <line x1="4" y1="16" x2="20" y2="16"/>
+        </svg>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#proyecto">Proyecto</a></li>
+        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#loteo">Loteo</a></li>
+        <li><a href="#ubicacion">Ubicación</a></li>
+        <li><a href="#visitar">Visitar</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section id="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-sub-label">Puangue · Melipilla · Región Metropolitana</p>
+      <h1 class="hero-title">Parcelas del Valle<br>La Libertad de Puangue</h1>
+      <p class="hero-subtitle">23 parcelas agrícolas desde 5.000 m² — naturaleza sin alejarse de la ciudad.</p>
+      <a href="#galeria" class="btn-hero">Ver parcelas</a>
+    </div>
+    <div class="scroll-cue" aria-hidden="true">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ── PROYECTO ── -->
+  <section id="proyecto">
+    <div class="proyecto-inner">
+      <div class="proyecto-text">
+        <h2 class="proyecto-title reveal">Tierra para quien<br>busca algo real</h2>
+        <p class="proyecto-body reveal">
+          En el Km 1,5 del camino asfaltado que conecta la Ruta 78 con el corazón de Puangue, Parcelas del Valle ofrece un lugar donde la ciudad queda lejos y lo esencial queda cerca.
+        </p>
+        <p class="proyecto-body reveal" style="margin-top: -1rem; margin-bottom: var(--s-lg);">
+          Cada parcela se pensó para uso agrícola: factibilidad de luz confirmada, acceso privado, agua de riego asegurada a través del Canal Puangue y dos pretiles con 80 m³ de reserva comunitaria.
+        </p>
+        <div class="proyecto-stats">
+          <div class="stat reveal">
+            <span class="stat-num">23</span>
+            <span class="stat-label">Lotes disponibles</span>
+          </div>
+          <div class="stat reveal">
+            <span class="stat-num">5.000</span>
+            <span class="stat-label">m² por lote mínimo</span>
+          </div>
+          <div class="stat reveal">
+            <span class="stat-num">1</span>
+            <span class="stat-label">hora desde Santiago</span>
+          </div>
+        </div>
+      </div>
+      <div class="proyecto-photo-wrap reveal">
+        <img src="./foto lote vista montañas.jpg" alt="Vista del lote con la cordillera al fondo" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- ── GALERÍA ── -->
+  <section id="galeria">
+    <div class="gallery-outer">
+      <div class="gallery-track" id="galleryTrack" role="region" aria-label="Galería de fotos" tabindex="0">
+
+        <div class="gallery-slide" data-index="0">
+          <img src="./foto hero recomendada.jpg" alt="Vista general del valle" loading="lazy">
+          <span class="gallery-caption">Vista general del valle</span>
+        </div>
+        <div class="gallery-slide" data-index="1">
+          <img src="./foto lote vista montañas.jpg" alt="Lote con vista a la cordillera" loading="lazy">
+          <span class="gallery-caption">Lote con vista a la cordillera</span>
+        </div>
+        <div class="gallery-slide" data-index="2">
+          <img src="./foto lote vista montañas 2.jpg" alt="Atardecer desde el lote" loading="lazy">
+          <span class="gallery-caption">Atardecer desde el lote</span>
+        </div>
+        <div class="gallery-slide" data-index="3">
+          <img src="./laguna terreno.jpg" alt="Laguna natural del terreno" loading="lazy">
+          <span class="gallery-caption">Laguna natural del terreno</span>
+        </div>
+        <div class="gallery-slide" data-index="4">
+          <img src="./anomalia hermosa vista entrada.jpg" alt="Entrada al proyecto" loading="lazy">
+          <span class="gallery-caption">Entrada al proyecto</span>
+        </div>
+        <div class="gallery-slide" data-index="5">
+          <img src="./camino y lote.jpg" alt="Camino interior" loading="lazy">
+          <span class="gallery-caption">Camino interior</span>
+        </div>
+        <div class="gallery-slide" data-index="6">
+          <img src="./colindacion terreno vecino.jpg" alt="Lindero con vecinos" loading="lazy">
+          <span class="gallery-caption">Lindero con vecinos</span>
+        </div>
+        <div class="gallery-slide" data-index="7">
+          <img src="./construccion camino de entrada.jpg" alt="Construcción acceso" loading="lazy">
+          <span class="gallery-caption">Construcción acceso</span>
+        </div>
+        <div class="gallery-slide" data-index="8">
+          <img src="./entrada loteo.jpg" alt="Portón de entrada" loading="lazy">
+          <span class="gallery-caption">Portón de entrada</span>
+        </div>
+        <div class="gallery-slide" data-index="9">
+          <img src="./foto vegetacion lote 2.jpg" alt="Vegetación nativa" loading="lazy">
+          <span class="gallery-caption">Vegetación nativa</span>
+        </div>
+        <div class="gallery-slide" data-index="10">
+          <img src="./foto vegetacion lote 3.jpg" alt="Flora del terreno" loading="lazy">
+          <span class="gallery-caption">Flora del terreno</span>
+        </div>
+        <div class="gallery-slide" data-index="11">
+          <img src="./inicio cultivo.jpg" alt="Inicio de cultivo" loading="lazy">
+          <span class="gallery-caption">Inicio de cultivo</span>
+        </div>
+        <div class="gallery-slide" data-index="12">
+          <img src="./inicio cultivo 2.jpg" alt="Preparación del suelo" loading="lazy">
+          <span class="gallery-caption">Preparación del suelo</span>
+        </div>
+        <div class="gallery-slide" data-index="13">
+          <img src="./inicio cultivo 3 con maquinaria a la vista.jpg" alt="Maquinaria en faena" loading="lazy">
+          <span class="gallery-caption">Maquinaria en faena</span>
+        </div>
+        <div class="gallery-slide" data-index="14">
+          <img src="./panoramica lote vista ciudad.jpg" alt="Vista panorámica" loading="lazy">
+          <span class="gallery-caption">Vista panorámica</span>
+        </div>
+        <div class="gallery-slide" data-index="15">
+          <img src="./vegetación en bruto lote.jpg" alt="Vegetación en bruto" loading="lazy">
+          <span class="gallery-caption">Vegetación en bruto</span>
+        </div>
+
+      </div>
+
+      <div class="gallery-nav">
+        <button class="gallery-btn" id="galleryPrev" aria-label="Foto anterior">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="gallery-dots" id="galleryDots" role="tablist" aria-label="Indicadores de foto"></div>
+        <button class="gallery-btn" id="galleryNext" aria-label="Foto siguiente">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── LIGHTBOX ── -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Vista ampliada de foto">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Cerrar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <button class="lightbox-prev" id="lightboxPrev" aria-label="Foto anterior">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <div class="lightbox-img-wrap">
+      <img id="lightboxImg" src="" alt="">
+      <p class="lightbox-caption" id="lightboxCaption"></p>
+    </div>
+    <button class="lightbox-next" id="lightboxNext" aria-label="Foto siguiente">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+    <p class="lightbox-counter" id="lightboxCounter" aria-live="polite"></p>
+  </div>
+
+  <!-- ── LOTEO ── -->
+  <section id="loteo">
+    <div class="loteo-watermark" aria-hidden="true">23</div>
+    <div class="loteo-inner">
+      <h2 class="loteo-title reveal">Loteo Parcelas del Valle</h2>
+      <ul class="loteo-attrs">
+        <li class="loteo-attr reveal">
+          <span class="loteo-attr-num">23</span>
+          <span class="loteo-attr-text">lotes desde 5.000 m² según topografía</span>
+        </li>
+        <li class="loteo-attr reveal">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(74,103,65,0.9)" stroke-width="1.8" stroke-linecap="round" style="flex-shrink:0;margin-top:2px"><path d="M12 22V12M12 12C12 7 7 4 2 6M12 12C12 7 17 4 22 6"/><rect x="6" y="10" width="12" height="6" rx="1"/></svg>
+          <span class="loteo-attr-text">Agua de riego — Canal Puangue</span>
+        </li>
+        <li class="loteo-attr reveal">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(74,103,65,0.9)" stroke-width="1.8" stroke-linecap="round" style="flex-shrink:0;margin-top:2px"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0"/><path d="M12 8v4l3 3"/></svg>
+          <span class="loteo-attr-text">2 pretiles — 80 m³ de reserva para riego comunitario</span>
+        </li>
+        <li class="loteo-attr reveal">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(201,169,110,0.9)" stroke-width="1.8" stroke-linecap="round" style="flex-shrink:0;margin-top:2px"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          <span class="loteo-attr-text">Factibilidad de luz eléctrica confirmada</span>
+        </li>
+        <li class="loteo-attr reveal">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(201,169,110,0.9)" stroke-width="1.8" stroke-linecap="round" style="flex-shrink:0;margin-top:2px"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <span class="loteo-attr-text">Acceso privado — estabilización en curso</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── UBICACIÓN ── -->
+  <section id="ubicacion">
+    <div class="ubicacion-inner">
+      <div class="ubicacion-header reveal">
+        <h2 class="ubicacion-title">Ubicación y acceso</h2>
+        <p class="ubicacion-body">A una hora de Santiago por la Ruta 78, el terreno se ubica en el Km 1,5 del camino asfaltado que entra hacia Puangue.</p>
+      </div>
+      <iframe
+        class="ubicacion-map reveal"
+        title="Ubicación de Valle La Libertad — Puangue, Melipilla"
+        src="https://www.openstreetmap.org/export/embed.html?bbox=-71.3477%2C-33.6761%2C-71.3277%2C-33.6661&layer=mapnik&marker=-33.671156%2C-71.337709"
+        loading="lazy"
+        allowfullscreen
+      ></iframe>
+      <p class="ubicacion-access reveal">Km 1,5 desde Ruta 78, camino asfaltado</p>
+      <div class="ubicacion-btns reveal">
+        <a class="btn-outline-wheat" href="https://www.google.com/maps/dir/?api=1&destination=-33.671156,-71.337709" target="_blank" rel="noopener">
+          <img src="./icons/google maps.png" alt="" aria-hidden="true">
+          Cómo llegar — Google Maps
+        </a>
+        <a class="btn-outline-wheat" href="https://waze.com/ul?ll=-33.671156,-71.337709&navigate=yes" target="_blank" rel="noopener">
+          <img src="./icons/waze.png" alt="" aria-hidden="true">
+          Abrir en Waze
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROPUESTA ── -->
+  <section id="propuesta">
+    <div class="propuesta-inner">
+      <div class="propuesta-header reveal">
+        <h2 class="propuesta-title">Una propuesta<br>pensada para quedarse</h2>
+      </div>
+      <div class="propuesta-grid">
+        <div class="prop-block reveal">
+          <img src="./icons/agriculture.png" alt="" aria-hidden="true" class="prop-block-img">
+          <p class="prop-block-num">01</p>
+          <h3 class="prop-block-title">Comunidad agrícola</h3>
+          <p class="prop-block-body">Obras ejecutadas en conjunto. Cada vecino aporta proporcionalmente. Un terreno pensado para quedarse y construir con los que vienen.</p>
+        </div>
+        <div class="prop-block reveal">
+          <img src="./icons/cooperate.png" alt="" aria-hidden="true" class="prop-block-img">
+          <p class="prop-block-num">02</p>
+          <h3 class="prop-block-title">Infraestructura conjunta</h3>
+          <p class="prop-block-body">Dos pretiles con 80 m³ de reserva de agua de riego para toda la comunidad. Recursos compartidos, costos compartidos.</p>
+        </div>
+        <div class="prop-block reveal">
+          <img src="./icons/price.png" alt="" aria-hidden="true" class="prop-block-img">
+          <p class="prop-block-num">03</p>
+          <h3 class="prop-block-title">Desde 750 UF</h3>
+          <p class="prop-block-body">Valores desde 750 UF hasta 1.000 UF. Precios competitivos para tierra agrícola en la Región Metropolitana.</p>
+        </div>
+        <div class="prop-block reveal">
+          <img src="./icons/credit.png" alt="" aria-hidden="true" class="prop-block-img">
+          <p class="prop-block-num">04</p>
+          <h3 class="prop-block-title">Formas de pago a evaluar</h3>
+          <p class="prop-block-body">Evaluamos cada caso de forma individual. Hablamos y encontramos una forma que funcione para ambos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FORMULARIO ── -->
+  <section id="visitar">
+    <div class="visitar-bg" aria-hidden="true"></div>
+    <div class="visitar-inner">
+      <h2 class="visitar-title reveal">Ven a conocer el valle</h2>
+      <div class="form-wrap">
+        <form id="visitaForm" novalidate autocomplete="on">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="nombre">Nombre completo</label>
+              <input class="form-input" type="text" id="nombre" name="nombre" autocomplete="name" placeholder="Tu nombre">
+              <p class="field-error" id="nombreErr" role="alert"></p>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="telefono">Teléfono</label>
+              <input class="form-input" type="tel" id="telefono" name="telefono" autocomplete="tel" placeholder="+56 9 XXXX XXXX">
+              <p class="field-error" id="telefonoErr" role="alert"></p>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="email">Correo electrónico</label>
+            <input class="form-input" type="email" id="email" name="email" autocomplete="email" placeholder="tu@email.cl">
+            <p class="field-error" id="emailErr" role="alert"></p>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="fecha">Fecha preferida de visita</label>
+            <input class="form-input" type="date" id="fecha" name="fecha" autocomplete="off">
+            <p class="field-error" id="fechaErr" role="alert"></p>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="mensaje">Mensaje (opcional)</label>
+            <textarea class="form-input" id="mensaje" name="mensaje" autocomplete="off" placeholder="Cuéntanos cómo te podemos ayudar..."></textarea>
+            <p class="field-error" id="mensajeErr" role="alert"></p>
+          </div>
+
+          <button type="submit" class="btn-submit" id="submitBtn">Solicitar visita</button>
+
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONFIRMACIÓN ── -->
+  <div class="confirm" id="confirm" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+    <div class="confirm-card">
+      <div class="confirm-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h2 class="confirm-title" id="confirmTitle">Solicitud enviada</h2>
+      <p class="confirm-body">Te contactaremos pronto para agendar tu visita al valle. Gracias por tu interés.</p>
+      <button class="btn-confirm-close" id="confirmClose">Cerrar</button>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <p>Valle La Libertad — Puangue, Melipilla &nbsp;·&nbsp; 2026</p>
+  </footer>
+
+  <script>
+    /* ─── Navbar shadow on scroll ─── */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    /* ─── Mobile menu ─── */
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks   = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', open);
+    });
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    /* ─── IntersectionObserver — reveals ─── */
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+    /* ─── Active nav link via IntersectionObserver ─── */
+    const navLinksAll = document.querySelectorAll('.nav-links a');
+    const sectionIds  = ['proyecto', 'galeria', 'loteo', 'ubicacion', 'propuesta', 'visitar'];
+
+    const navObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          navLinksAll.forEach(a => {
+            a.removeAttribute('aria-current');
+            if (a.getAttribute('href') === '#' + id) {
+              a.setAttribute('aria-current', 'true');
+            }
+          });
+        }
+      });
+    }, { threshold: 0.35 });
+
+    sectionIds.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) navObs.observe(el);
+    });
+
+    /* ─── Gallery ─── */
+    const track   = document.getElementById('galleryTrack');
+    const dotsEl  = document.getElementById('galleryDots');
+    const prevBtn = document.getElementById('galleryPrev');
+    const nextBtn = document.getElementById('galleryNext');
+    const slides  = track ? Array.from(track.querySelectorAll('.gallery-slide')) : [];
+    const total   = slides.length;
+
+    // Build dots
+    if (dotsEl) {
+      slides.forEach((_, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'gallery-dot' + (i === 0 ? ' active' : '');
+        btn.setAttribute('role', 'tab');
+        btn.setAttribute('aria-label', `Ir a foto ${i + 1} de ${total}`);
+        btn.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+        btn.addEventListener('click', () => scrollToSlide(i));
+        dotsEl.appendChild(btn);
+      });
+    }
+    const dots = dotsEl ? Array.from(dotsEl.querySelectorAll('.gallery-dot')) : [];
+
+    function scrollToSlide(index) {
+      const clamped = Math.max(0, Math.min(index, total - 1));
+      slides[clamped].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+    }
+
+    function updateDots() {
+      if (!track || !dots.length) return;
+      const scrollLeft = track.scrollLeft;
+      const slideWidth = slides[0].offsetWidth;
+      const current    = Math.round(scrollLeft / slideWidth);
+      dots.forEach((d, i) => {
+        const active = i === current;
+        d.classList.toggle('active', active);
+        d.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+    }
+
+    track.addEventListener('scroll', updateDots, { passive: true });
+
+    prevBtn.addEventListener('click', () => {
+      const current = Math.round(track.scrollLeft / slides[0].offsetWidth);
+      scrollToSlide(current - 1);
+    });
+    nextBtn.addEventListener('click', () => {
+      const current = Math.round(track.scrollLeft / slides[0].offsetWidth);
+      scrollToSlide(current + 1);
+    });
+
+    // Keyboard navigation on track
+    track.addEventListener('keydown', e => {
+      const current = Math.round(track.scrollLeft / slides[0].offsetWidth);
+      if (e.key === 'ArrowRight') { e.preventDefault(); scrollToSlide(current + 1); }
+      if (e.key === 'ArrowLeft')  { e.preventDefault(); scrollToSlide(current - 1); }
+    });
+
+    /* ─── Lightbox ─── */
+    const lightbox    = document.getElementById('lightbox');
+    const lbImg       = document.getElementById('lightboxImg');
+    const lbCaption   = document.getElementById('lightboxCaption');
+    const lbCounter   = document.getElementById('lightboxCounter');
+    const lbCloseBtn  = document.getElementById('lightboxClose');
+    const lbPrevBtn   = document.getElementById('lightboxPrev');
+    const lbNextBtn   = document.getElementById('lightboxNext');
+
+    let currentIndex = 0;
+
+    function openLightbox(index) {
+      currentIndex = index;
+      updateLightbox();
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      lbCloseBtn.focus();
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+      slides[currentIndex] && slides[currentIndex].querySelector('img').focus();
+    }
+
+    function updateLightbox() {
+      const slide = slides[currentIndex];
+      const img   = slide.querySelector('img');
+      const cap   = slide.querySelector('.gallery-caption');
+      lbImg.src      = img.src;
+      lbImg.alt      = img.alt;
+      lbCaption.textContent = cap ? cap.textContent : '';
+      lbCounter.textContent = `${currentIndex + 1} / ${total}`;
+    }
+
+    function lbPrev() {
+      currentIndex = (currentIndex - 1 + total) % total;
+      updateLightbox();
+    }
+    function lbNext() {
+      currentIndex = (currentIndex + 1) % total;
+      updateLightbox();
+    }
+
+    // Open lightbox on slide click
+    slides.forEach((slide, i) => {
+      slide.addEventListener('click', () => openLightbox(i));
+      slide.setAttribute('role', 'button');
+      slide.setAttribute('tabindex', '0');
+      slide.setAttribute('aria-label', `Abrir foto ${i + 1} en pantalla completa`);
+      slide.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(i); }
+      });
+    });
+
+    lbCloseBtn.addEventListener('click', closeLightbox);
+    lbPrevBtn.addEventListener('click', lbPrev);
+    lbNextBtn.addEventListener('click', lbNext);
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+
+    document.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape')     closeLightbox();
+      if (e.key === 'ArrowLeft')  lbPrev();
+      if (e.key === 'ArrowRight') lbNext();
+    });
+
+    /* ─── Form validation ─── */
+    const form     = document.getElementById('visitaForm');
+    const confirm   = document.getElementById('confirm');
+    const closeBtn  = document.getElementById('confirmClose');
+
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const TEL_RE   = /^\+?[\d\s\-().]{8,}$/;
+
+    const errMsgs = {
+      nombre:   'Ingresa tu nombre completo',
+      telefono: 'Ingresa un teléfono válido',
+      email:    'Ingresa un correo electrónico válido',
+      fecha:    'Selecciona una fecha futura',
+    };
+
+    function setErr(id, msg) {
+      const el  = document.getElementById(id);
+      const err = document.getElementById(id + 'Err');
+      el.classList.add('error');
+      el.classList.remove('valid');
+      err.textContent = msg;
+      err.setAttribute('role', 'alert');
+    }
+
+    function setOk(id) {
+      const el  = document.getElementById(id);
+      const err = document.getElementById(id + 'Err');
+      el.classList.remove('error');
+      el.classList.add('valid');
+      err.textContent = '';
+      err.removeAttribute('role');
+    }
+
+    function validate(id) {
+      const el = document.getElementById(id);
+      if (!el) return true;
+      const v  = el.value.trim();
+      if (id === 'nombre'   && (!v || v.length < 2))    { setErr(id, errMsgs[id]); return false; }
+      if (id === 'telefono' && !TEL_RE.test(v))          { setErr(id, errMsgs[id]); return false; }
+      if (id === 'email'    && !EMAIL_RE.test(v))         { setErr(id, errMsgs[id]); return false; }
+      if (id === 'fecha') {
+        const today = new Date().toISOString().split('T')[0];
+        if (!v)                                            { setErr(id, errMsgs[id]); return false; }
+        if (v < today)                                    { setErr(id, 'La fecha debe ser futura'); return false; }
+      }
+      setOk(id);
+      return true;
+    }
+
+    ['nombre', 'telefono', 'email', 'fecha'].forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.addEventListener('blur', () => validate(id));
+      el.addEventListener('input', () => {
+        if (el.classList.contains('error')) validate(id);
+      });
+    });
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      let ok = true;
+      ['nombre', 'telefono', 'email', 'fecha'].forEach(id => { if (!validate(id)) ok = false; });
+      if (ok) {
+        confirm.classList.add('show');
+        form.reset();
+        ['nombre', 'telefono', 'email', 'fecha'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) { el.classList.remove('valid', 'error'); }
+          const err = document.getElementById(id + 'Err');
+          if (err) err.textContent = '';
+        });
+      }
+    });
+
+    closeBtn.addEventListener('click', () => confirm.classList.remove('show'));
+    confirm.addEventListener('click', e => { if (e.target === confirm) confirm.classList.remove('show'); });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && confirm.classList.contains('show')) confirm.classList.remove('show');
+    });
+  </script>
+</body>
+</html>
